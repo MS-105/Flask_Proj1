@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Calculator</title>
+</head>
+<body>
+    <h1>Basic Calculator</h1>
+
+    <!-- Here method is GET so result shows in URL -->
+    <form method="GET" action="{{ url_for('calculator') }}">
+        <input type="number" step="any" name="num1" placeholder="First number" value="{{ num1 or '' }}" required>
+        <input type="number" step="any" name="num2" placeholder="Second number" value="{{ num2 or '' }}" required>
+
+        <select name="operation" required>
+            <option value="add" {% if operation=='add' %}selected{% endif %}>+</option>
+            <option value="sub" {% if operation=='sub' %}selected{% endif %}>-</option>
+            <option value="mul" {% if operation=='mul' %}selected{% endif %}>*</option>
+            <option value="div" {% if operation=='div' %}selected{% endif %}>/</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
