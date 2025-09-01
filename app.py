@@ -15,6 +15,11 @@ def welcome():
 def index():
     return "welcome to index page"
 
+@app.route("/username/<username>")
+def welcome2(username):
+    return f"hello {username}"
+
+
 #if ran directly n 
 if __name__ == "__main__" :
     #start server 
